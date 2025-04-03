@@ -18,8 +18,6 @@ class Reminder:
   def _str_(self):
       return f"Reminder on {self.date_time} of type {self.type}"
 
-
-
 # TODO: Implement Event class here
 @dataclass
 class Event:
@@ -30,6 +28,10 @@ class Event:
     end_at: time
     reminders : list[Reminder] = field(default_factory=list)
     id: str = field(default_factory=generate_unique_id)
+
+    def add_reminder(self, date_time: datetime, type: str = Reminder.EMAIL):
+        self.reminders.append(Reminder(date_time, type))
+
 # TODO: Implement Day class here
 
 
